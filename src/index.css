@@ -19,6 +19,34 @@ a {
   font-weight: 600;
 }
 
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.icon-small {
+  font-size: 1rem;
+}
+
+.icon-normal {
+  font-size: 1.5rem;
+}
+
+.icon-large {
+  font-size: 2rem;
+}
+
+.icon-open {
+  color: #da4545;
+}
+.icon-done {
+  color: #3ae734;
+}
+
 .red {
   background-color: rgba(255, 0, 0, 0.2);
   color: red;
@@ -185,7 +213,7 @@ form input {
 .comment-count {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.25rem;
   color: #aaa;
   font-size: 0.9rem;
