@@ -4,6 +4,10 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { worker } from "@uidotdev/react-query-api";
+import { QueryClient, QueryClientProvider } from "react-query";
+import 'remixicon/fonts/remixicon.css'
+
+const client = new QueryClient();
 
 new Promise((res) => setTimeout(res, 100))
   .then(() =>
@@ -15,11 +19,13 @@ new Promise((res) => setTimeout(res, 100))
   .then(() => {
     ReactDOM.render(
       <React.StrictMode>
-        <BrowserRouter>
-          <div className="container">
-            <App />
-          </div>
-        </BrowserRouter>
+        <QueryClientProvider client={client}>
+          <BrowserRouter>
+            <div className="container">
+              <App />
+            </div>
+          </BrowserRouter>
+        </QueryClientProvider>
       </React.StrictMode>,
       document.getElementById("root")
     );
