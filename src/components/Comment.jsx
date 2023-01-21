@@ -1,5 +1,5 @@
 import React from 'react'
-import { useUserData } from '../helpers/useUSerData';
+import { useUserData } from '../helpers/useUserData';
 import { relativeDate } from '../helpers/relativeDate';
 
 function Comment({ comment, createdBy, createdDate }) {

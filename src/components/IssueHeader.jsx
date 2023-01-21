@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { possibleStatus } from "../helpers/defaultData";
-import { useUserData } from "../helpers/useUSerData";
+import { useUserData } from "../helpers/useUserData";
 import { relativeDate } from "../helpers/relativeDate";
 
 function IssueHeader({
