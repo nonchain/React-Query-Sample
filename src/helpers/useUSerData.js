@@ -5,7 +5,10 @@ export function useUserData(userId) {
    const userData = useQuery(
       // when userId changed, refetch data
       ["users", userId],
-      () => fetch(`/api/users/${userId}`).then(res => res.json())
+      () => fetch(`/api/users/${userId}`).then(res => res.json()),
+      {
+         staleTime: 5 * 1000 * 60,
+      }
    );
 
    return userData;
