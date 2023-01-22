@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 import IssueItem from "./IssueItem";
+import fetchWithError from "../helpers/fetchWithError";
 
 export default function IssuesList({ labels, status }) {
   const [searchValue, setSearchValue] = useState('');
@@ -10,7 +11,11 @@ export default function IssuesList({ labels, status }) {
     () => {
       const statusString = status ? `&status=${status}` : '';
       const labelString = labels.map(label => `labels[]=${label}`).join("&");
-      return fetch(`/api/issues?${labelString}${statusString}`).then(res => res.json())
+      return fetchWithError(`/api/issues?${labelString}${statusString}`, {
+        headers: {
+          "x-error": true
+        }
+      });
     }
   );
 
@@ -43,6 +48,7 @@ export default function IssuesList({ labels, status }) {
           onChange={onSearchChangeHandler} />
       </form>
       <h2 >Issues List</h2 >
+      {issuesQuery.isError && <p>{issuesQuery.error.message}</p>}
       {issuesQuery.isLoading ? (
         <p>Loading...</p>
       ) : searchQuery.fetchStatus === 'idle' && searchQuery.isLoading ? ( // idle means there is no new data to fetch - isLoading means there is no data currently
