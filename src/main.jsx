@@ -8,7 +8,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import 'remixicon/fonts/remixicon.css'
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000
+    }
+  }
+});
 
 new Promise((res) => setTimeout(res, 100))
   .then(() =>
